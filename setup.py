@@ -1,8 +1,12 @@
 import os
 import uuid
 
-from pip.req import parse_requirements
+#from pip.req import parse_requirements
 from setuptools import setup
+try: # for pip >= 10
+    from pip._internal.req import parse_requirements
+except ImportError: # for pip <= 9.0.3
+    from pip.req import parse_requirements
 
 here = os.path.abspath(os.path.dirname(__file__))
 
